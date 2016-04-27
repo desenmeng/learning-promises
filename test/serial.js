@@ -3,21 +3,15 @@ import delay from '../fixture/delay';
 
 const numbers = [1, 2, 3, 4, 5];
 
-function series(factories) {
-  var resolve = Promise.resolve();
+const series = factories => {
+  let resolve = Promise.resolve();
   factories.forEach(factory => {
-    resolve = resolve.then(number => {
-      return factory()
-    });
+    resolve = resolve.then(number => factory());
   });
   return resolve;
 }
 
-const factory = number => {
-  return () => {
-    return delay(number);
-  };
-}
+const factory = number => () => delay(number)
 
 test('serial', async t => {
   console.time('serial');
