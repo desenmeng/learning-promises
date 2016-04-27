@@ -5,7 +5,7 @@ const numbers = [1, 2, 3, 4, 5];
 
 function series(factories) {
   var resolve = Promise.resolve();
-  factories.forEach(function (factory) {
+  factories.forEach(factory => {
     resolve = resolve.then(number => {
       return factory()
     });
