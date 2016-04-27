@@ -28,7 +28,7 @@ test('single argument', async t => {
 
 test('multi argument', async t => {
   const promise_multi = promisify(async_multi);
-  t.deepEqual(await promise_multi(text, hello), [text, hello]);
+  t.deepEqual(await promise_multi(text, hello), text, [hello]);
 });
 
 test('throw error', async t => {
