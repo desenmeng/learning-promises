@@ -4,7 +4,7 @@ module.exports = fn => {
       args.push((err, result, ...other) => {
         err ? reject(err) : resolve(result, other)
       })
-      fn.apply(this, args)
+      fn(...args)
     })
   }
 }

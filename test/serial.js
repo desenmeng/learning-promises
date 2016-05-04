@@ -17,4 +17,4 @@ test('serial', async t => {
   console.time('serial');
   t.is(await series(numbers.map(factory)), numbers[numbers.length -1])
   console.timeEnd('serial');
-});
+})
