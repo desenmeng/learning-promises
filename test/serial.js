@@ -4,11 +4,7 @@ import delay from '../fixture/delay';
 const numbers = [1, 2, 3, 4, 5];
 
 const series = factories => {
-  let resolve = Promise.resolve();
-  factories.forEach(factory => {
-    resolve = resolve.then(number => factory());
-  });
-  return resolve;
+  return factories.reduce((resolve, factory) => resolve.then(number => factory()), Promise.resolve())
 }
 
 const factory = number => () => delay(number)
